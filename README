@@ -1,0 +1,7 @@
+basic purpose:
+append visual element, which can be connected with the other visual element;
+
+encapsulate logic and behavior on connection
+
+
+extemde purpose: work in design time - view in rutime
