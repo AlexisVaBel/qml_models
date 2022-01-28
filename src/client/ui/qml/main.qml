@@ -6,5 +6,5 @@ ApplicationWindow
     visible: true
     width: 640
     height: 480
-    title: qsTr("QML Nodes")
+    title: qsTr("QML-C++ Models")
 }

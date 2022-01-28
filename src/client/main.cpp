@@ -1,7 +1,5 @@
 #include <QApplication>
 
-#include <client/ui/DumpWidget.h>
-
 #include "spdlog/sinks/stdout_sinks.h"
 #include <docopt/docopt.h>
 #include <functional>
