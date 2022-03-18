@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>ui/qml/main.qml</file>
+        <file>ui/qml/entity/box.qml</file>
+        <file>ui/qml/entity/box2.qml</file>
+        <file>ui/qml/entity/box3.qml</file>
+        <file>ui/qml/entity/box4.qml</file>
     </qresource>
 </RCC>
