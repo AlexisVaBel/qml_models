@@ -1,0 +1,7 @@
+module Components
+
+
+NormalButton qrc:/ui/qml/Components/NormalButton.qml
+RowElement qrc:/ui/qml/Components/RowElement.qml
+DragTile qrc:/ui/qml/Components/DragTile.qml
+DropTile qrc:/ui/qml/Components/DropTile.qml

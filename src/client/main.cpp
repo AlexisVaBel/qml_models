@@ -2,12 +2,12 @@
 #include <QFont>
 #include <QtPlugin>
 #include <QTranslator>
+#include <QQmlApplicationEngine>
 
-#include "spdlog/sinks/stdout_sinks.h"
+#include <spdlog/sinks/stdout_sinks.h>
 #include <docopt/docopt.h>
 #include <functional>
 #include <iostream>
-#include <QQmlApplicationEngine>
 #include <spdlog/spdlog.h>
 
 static constexpr auto USAGE =
@@ -39,11 +39,11 @@ bool installTranslator(QLocale const& locale, QString const& fileName) {
 int main(int argc, char* argv[]) {
 	QGuiApplication app(argc, argv);
 
-	QLocale locale("ru_RU");
-	installTranslator(locale, "qtbase");
+//	QLocale locale("ru_RU");
+//	installTranslator(locale, "qtbase");
 
-	QFont font("Roboto Regular", 14);
-	app.setFont(font);
+//	QFont font("Roboto Regular", 14);
+//	app.setFont(font);
 
 	SPDLOG_INFO("initiated app");
 

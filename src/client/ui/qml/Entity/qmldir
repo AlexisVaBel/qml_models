@@ -1,0 +1,7 @@
+module Entity
+
+Box1 qrc:/ui/qml/Entity/Box1.qml
+Box2 qrc:/ui/qml/Entity/Box2.qml
+Box3 qrc:/ui/qml/Entity/Box3.qml
+Box4 qrc:/ui/qml/Entity/Box4.qml
+

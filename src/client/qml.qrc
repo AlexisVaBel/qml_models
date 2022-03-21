@@ -1,9 +1,13 @@
 <RCC>
     <qresource prefix="/">
         <file>ui/qml/main.qml</file>
-        <file>ui/qml/entity/box.qml</file>
-        <file>ui/qml/entity/box2.qml</file>
-        <file>ui/qml/entity/box3.qml</file>
-        <file>ui/qml/entity/box4.qml</file>
+        <file>ui/qml/Entity/box1.qml</file>
+        <file>ui/qml/Entity/box2.qml</file>
+        <file>ui/qml/Entity/box3.qml</file>
+        <file>ui/qml/Entity/box4.qml</file>
+        <file>ui/qml/Components/RowElement.qml</file>
+        <file>ui/qml/Components/NormalButton.qml</file>
+        <file>ui/qml/Components/DragTile.qml</file>
+        <file>ui/qml/Components/DropTile.qml</file>
     </qresource>
 </RCC>
