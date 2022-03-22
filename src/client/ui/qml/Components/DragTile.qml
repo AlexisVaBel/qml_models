@@ -3,10 +3,9 @@ import QtQuick 2.0
 Item {
     id: root
 
-    //    required property string colorKey
     property string colorKey: "white"
+    required property int modelData
 
-    //    required property int modelData
     width: 64
     height: 64
 

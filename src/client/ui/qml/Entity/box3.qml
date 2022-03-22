@@ -11,26 +11,6 @@ Rectangle {
     width: parent.width
     height: parent.height
 
-    Grid {
-        anchors.left: blueSource.right
-        anchors.top: root.top
-        anchors.right: root.right
-        anchors.bottom: root.bottom
-        anchors.margins: 5
-
-        opacity: 0.5
-
-        columns: 126
-        rows: 126
-
-        Repeater {
-            model: 81
-            delegate: DropTile {
-                colorKey: "blue"
-            }
-        }
-    }
-
     Column {
         id: blueSource
 
@@ -44,6 +24,23 @@ Rectangle {
         Repeater {
             model: 81
             delegate: DragTile {
+                colorKey: "blue"
+            }
+        }
+    }
+
+    Grid {
+        anchors.left: blueSource.right
+        anchors.top: root.top
+        width: parent.width - blueSource.width
+        anchors.bottom: root.bottom
+        anchors.margins: 5
+
+        opacity: 0.5
+
+        Repeater {
+            model: 256
+            delegate: DropTile {
                 colorKey: "blue"
             }
         }
