@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.5.0)
 
 # Set the project name to your project name
 project(qml_models CXX)
@@ -7,6 +7,8 @@ include(cmake/PreventInSourceBuilds.cmake)
 
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_20)
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
   option(ENABLE_BUILD_WITH_TIME_TRACE "Enable -ftime-trace to generate time tracing .json files on clang" OFF)
@@ -53,8 +55,11 @@ if(ENABLE_TESTING)
   add_subdirectory(test)
 endif()
 
-set(QT_COMPONENTS Core Quick Gui Widgets Network Test LinguistTools Sql Multimedia MultimediaWidgets  Qml Quick  )
-find_package(Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
+set(QT_COMPONENTS Core Quick Gui Widgets Network Test LinguistTools Sql Multimedia MultimediaWidgets  Qml Quick QuickControls2)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS} REQUIRED)
+message("Building with Qt" ${QT_VERSION_MAJOR})
+
 
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
 if(EXISTS "${LOC_PATH}")

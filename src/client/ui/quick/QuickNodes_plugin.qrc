@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/QuickNodes">
+        <file>qmldir_plugin</file>
+    </qresource>
+</RCC>

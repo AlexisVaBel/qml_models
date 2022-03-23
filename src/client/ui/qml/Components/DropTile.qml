@@ -4,8 +4,8 @@ DropArea {
     id: dragTarget
 
     property string colorKey: "white"
-    property alias dropProxy: dragTarget
 
+    //    property alias dropProxy: dragTarget
     width: 64
     height: 64
     keys: [colorKey]

@@ -2,8 +2,9 @@ set(SOURCES)
 set(HEADERS)
 set(UIS)
 
-set(CLIENT_MODULES ui)
+add_subdirectory(ui/quick)
 
+set(CLIENT_MODULES ui)
 foreach (X ${CLIENT_MODULES})
     file(GLOB ${X}_SOURCES "${X}/*.cpp")
     file(GLOB ${X}_HEADERS "${X}/*.h")
@@ -18,13 +19,19 @@ endforeach ()
 configure_file(Deploy.in.h Deploy.h)
 
 
+include_directories( ${Qt5Quick_INCLUDE_DIRS} )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR} "quick" )
+
 
 qt5_add_resources(QT_RESOURCES qml.qrc)
+
 add_library(client STATIC ${SOURCES} ${HEADERS} ${UIS})
 target_include_directories(client PRIVATE "${PROJECT_BINARY_DIR}")
 target_include_directories(client PUBLIC "${CMAKE_CURRENT_BINARY_DIR}")
+target_include_directories(client PUBLIC QuickNodes)
 target_link_libraries(client PUBLIC Qt5::Core Qt5::Widgets Qt5::Multimedia Qt5::MultimediaWidgets Qt5::Qml Qt5::Quick)
 target_link_libraries(client PUBLIC core server)
+target_link_libraries(client PUBLIC QuickNodes)
 
 add_executable(${APP_NAME} main.cpp ${QT_RESOURCES})
 

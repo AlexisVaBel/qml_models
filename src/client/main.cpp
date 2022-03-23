@@ -1,13 +1,14 @@
 #include <QApplication>
 #include <QFont>
+#include <QQmlApplicationEngine>
 #include <QtPlugin>
 #include <QTranslator>
-#include <QQmlApplicationEngine>
 
-#include <spdlog/sinks/stdout_sinks.h>
+#include "ui/quick/QuickNodes.h"
 #include <docopt/docopt.h>
 #include <functional>
 #include <iostream>
+#include <spdlog/sinks/stdout_sinks.h>
 #include <spdlog/spdlog.h>
 
 static constexpr auto USAGE =
@@ -39,11 +40,11 @@ bool installTranslator(QLocale const& locale, QString const& fileName) {
 int main(int argc, char* argv[]) {
 	QGuiApplication app(argc, argv);
 
-//	QLocale locale("ru_RU");
-//	installTranslator(locale, "qtbase");
+	//	QLocale locale("ru_RU");
+	//	installTranslator(locale, "qtbase");
 
-//	QFont font("Roboto Regular", 14);
-//	app.setFont(font);
+	//	QFont font("Roboto Regular", 14);
+	//	app.setFont(font);
 
 	SPDLOG_INFO("initiated app");
 
@@ -55,6 +56,9 @@ int main(int argc, char* argv[]) {
 	QUrl const qmlUrl("qrc:/ui/qml/main.qml");
 
 	engine.load(QUrl(QStringLiteral("qrc:/ui/qml/main.qml")));
+
+	QuickNodes::initialize(&engine);
+	engine.addPluginPath(QStringLiteral("ui/quick")); 
 
 	QObject::connect(
 			&engine, &QQmlApplicationEngine::objectCreated, &app, [qmlUrl](QObject* obj, const QUrl& objUrl) {

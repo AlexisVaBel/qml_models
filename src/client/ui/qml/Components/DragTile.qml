@@ -4,8 +4,8 @@ Item {
     id: root
 
     property string colorKey: "white"
-    required property int modelData
 
+    //    required property int modelData
     width: 64
     height: 64
 

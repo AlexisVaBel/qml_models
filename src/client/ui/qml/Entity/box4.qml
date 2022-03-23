@@ -1,14 +1,12 @@
 import QtQuick 2.12
 
-Rectangle {
+import QuickNodes 2.0 as QNo
+
+//import "qrc:/QuickNodes" as QNo
+QNo.Navigable {
     id: root
-    property alias internalText: valueText
-    color: "yellow"
-    border.color: "black"
-    border.width: 1
-    radius: 5
-    width: 100
-    height: 100
+    clip: true
+    anchors.fill: parent
 
     Text {
         id: valueText

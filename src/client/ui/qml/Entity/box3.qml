@@ -29,6 +29,31 @@ Rectangle {
         }
     }
 
+    //    Rectangle {
+    //        anchors {
+    //            top: parent.top
+    //            right: parent.right
+    //            bottom: parent.bottom
+    //            left: blueSource.right
+    //        }
+    //        width: parent.width / 2
+    //        color: "gray"
+    //        opacity: 0.5
+    //        DropArea {
+    //            anchors.fill: parent
+    //            onEntered: drag.source.caught = true
+    //            onExited: drag.source.caught = false
+    //        }
+    //        states: [
+    //            State {
+    //                when: dragTarget.containsDrag
+    //                PropertyChanges {
+    //                    target: dropRectangle
+    //                    color: "grey"
+    //                }
+    //            }
+    //        ]
+    //    }
     Grid {
         anchors.left: blueSource.right
         anchors.top: root.top
@@ -39,7 +64,7 @@ Rectangle {
         opacity: 0.5
 
         Repeater {
-            model: 256
+            model: 1024 * 768 / 32
             delegate: DropTile {
                 colorKey: "blue"
             }

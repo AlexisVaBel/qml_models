@@ -1,0 +1,4 @@
+module QuickNodes
+plugin quicknodesplugin
+classname QuickNodesPlugin
+
