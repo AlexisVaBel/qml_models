@@ -1,11 +1,19 @@
 #stolen idea and code from QANAVA - thanks guys
 set(quick_source_files
     Navigable.h
+    GraphView.h
+    Grid.h
+    PieChart.h
     )
 
 set(quick_header_files
     Navigable.cpp
+    GraphView.cpp
+    Grid.cpp
+    PieChart.cpp
     )
+
+
 
 source_group("Headers" FILES ${quick_header_files})
 source_group("Sources" FILES ${quick_source_files})
@@ -58,7 +66,7 @@ target_link_libraries(QuickNodes PUBLIC Qt5::Core Qt5::Qml Qt5::Gui Qt5::QuickCo
 
 
 # Configure QuickNodes QML module plugin #####################################
-set(PLUGIN_TARGET "quicknodeslugin")
+set(PLUGIN_TARGET "quicknodesplugin")
 add_library(${PLUGIN_TARGET} SHARED ${quick_plugin_files})
 target_link_libraries(${PLUGIN_TARGET} QuickNodes)
 
@@ -76,6 +84,11 @@ string(STRIP ${QT_INSTALL_QML_RAW} QT_INSTALL_QML)
 set(DESTDIR "${QT_INSTALL_QML}/${TARGETPATH}")
 install(TARGETS ${PLUGIN_TARGET} DESTINATION ${DESTDIR})
 
+message("============================================")
+message("=================== destdir ================")
+message(${DESTDIR})
+message("============================================")
+
 # Install qmldir file
 if(QUICK_NODE_BUILD_STATIC_QRC)
     install(
@@ -83,12 +96,15 @@ if(QUICK_NODE_BUILD_STATIC_QRC)
         DESTINATION ${DESTDIR}
         RENAME qmldir
         )
+    message("static install")
 else()
     install(
         FILES ${CMAKE_CURRENT_SOURCE_DIR}/qmldir_plugin
         DESTINATION ${DESTDIR}
         RENAME qmldir
         )
+    message("non static install")
+    message(${CMAKE_CURRENT_SOURCE_DIR})
 endif(QUICK_NODE_BUILD_STATIC_QRC)
 
 

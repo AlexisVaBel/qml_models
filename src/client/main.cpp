@@ -4,22 +4,22 @@
 #include <QtPlugin>
 #include <QTranslator>
 
-#include "ui/quick/QuickNodes.h"
+
 #include <docopt/docopt.h>
 #include <functional>
 #include <iostream>
 #include <spdlog/sinks/stdout_sinks.h>
 #include <spdlog/spdlog.h>
 
-static constexpr auto USAGE =
-		R"(QML NODES.
+//static constexpr auto USAGE =
+//		R"(QML NODES.
 
-    Usage:
-          TODO - prepare usage
- Options:
-          -h --help     Show this screen.
-          --version     Show version.
-)";
+//    Usage:
+//          TODO - prepare usage
+// Options:
+//          -h --help     Show this screen.
+//          --version     Show version.
+//)";
 
 auto initLog() {
 	auto console = spdlog::stdout_logger_mt("console");
@@ -53,11 +53,16 @@ int main(int argc, char* argv[]) {
 	QQmlApplicationEngine engine;
 
 	engine.addImportPath("qrc:/ui/qml/");
+//	engine.addImportPath("qrc:/ui/quick/");
+	
+
+	
 	QUrl const qmlUrl("qrc:/ui/qml/main.qml");
 
 	engine.load(QUrl(QStringLiteral("qrc:/ui/qml/main.qml")));
-
-	QuickNodes::initialize(&engine);
+	
+	
+	
 	engine.addPluginPath(QStringLiteral("ui/quick")); 
 
 	QObject::connect(

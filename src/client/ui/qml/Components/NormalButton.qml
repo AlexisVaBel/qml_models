@@ -9,6 +9,7 @@ Rectangle {
     property alias caption: name.text
     Text {
         anchors.centerIn: root.Center
+
         id: name
         text: caption
         color: "white"

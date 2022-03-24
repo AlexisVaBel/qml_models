@@ -2,6 +2,9 @@
 
 #include <QQmlExtensionPlugin>
 
+
+namespace ui::quick{
+
 class Plugin: public QQmlExtensionPlugin
 {
 	Q_OBJECT
@@ -14,4 +17,5 @@ private:
 	bool isLoadedFromResources() const;	
 };
 
+}
 
