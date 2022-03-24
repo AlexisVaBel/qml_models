@@ -1,7 +1,11 @@
 basic purpose:
-refresh knowledge how to interact qml - c++;
+1. refresh knowledge how to interact qml - c++;
+2. make bindings c++ to qml;
+3. make custom elements via c++ and qml;
 
 used resources:
-https://www.youtube.com/watch?v=8wj9relIrcs&list=PLvItDmb0sZw_l5qKMLTjePXX485CWKVNe&index=7
+0. https://doc.qt.io/qt-5/qtqml-tutorials-extending-qml-example.html;
+1. https://www.youtube.com/watch?v=8wj9relIrcs&list=PLvItDmb0sZw_l5qKMLTjePXX485CWKVNe&index=7;
+2. https://github.com/cneben/QuickQanava;
 
 
