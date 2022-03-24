@@ -4,7 +4,6 @@
 #include <QtPlugin>
 #include <QTranslator>
 
-
 #include <docopt/docopt.h>
 #include <functional>
 #include <iostream>
@@ -53,17 +52,13 @@ int main(int argc, char* argv[]) {
 	QQmlApplicationEngine engine;
 
 	engine.addImportPath("qrc:/ui/qml/");
-//	engine.addImportPath("qrc:/ui/quick/");
-	
+	//	engine.addImportPath("qrc:/ui/quick/");
 
-	
 	QUrl const qmlUrl("qrc:/ui/qml/main.qml");
 
 	engine.load(QUrl(QStringLiteral("qrc:/ui/qml/main.qml")));
-	
-	
-	
-	engine.addPluginPath(QStringLiteral("ui/quick")); 
+
+	engine.addPluginPath(QStringLiteral("ui/quick"));
 
 	QObject::connect(
 			&engine, &QQmlApplicationEngine::objectCreated, &app, [qmlUrl](QObject* obj, const QUrl& objUrl) {

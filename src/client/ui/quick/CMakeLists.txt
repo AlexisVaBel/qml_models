@@ -74,7 +74,7 @@ target_link_libraries(${PLUGIN_TARGET} QuickNodes)
 set(URI QuickNodes)
 string(REPLACE "." "/" TARGETPATH ${URI})
 if (NOT DEFINED QT_QMAKE_EXECUTABLE)
-    get_target_property (QT_QMAKE_EXECUTABLE Qt${QT_VERSION_MAJOR}::qmake IMPORTED_LOCATION)
+    get_target_property (QT_QMAKE_EXECUTABLE Qt5::qmake IMPORTED_LOCATION)
     if (NOT QT_QMAKE_EXECUTABLE)
         message(FATAL_ERROR "Cannot find qmake")
     endif()
@@ -87,6 +87,7 @@ install(TARGETS ${PLUGIN_TARGET} DESTINATION ${DESTDIR})
 message("============================================")
 message("=================== destdir ================")
 message(${DESTDIR})
+message(${CMAKE_BINARY_DIR})
 message("============================================")
 
 # Install qmldir file
@@ -111,7 +112,13 @@ endif(QUICK_NODE_BUILD_STATIC_QRC)
 # Install source QML files to ease debugging
 install(
     DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/	# sic! Need leading slash, otherwise it will install into subdir src
-    DESTINATION ${DESTDIR}
+    DESTINATION ${CMAKE_BINARY_DIR}/bin/
     FILES_MATCHING PATTERN "*.qml"
+    )
+
+install(
+    FILES ${CMAKE_CURRENT_SOURCE_DIR}/qmldir_plugin
+    DESTINATION ${CMAKE_BINARY_DIR}/bin/
+    RENAME qmldir
     )
 

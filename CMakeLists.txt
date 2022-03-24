@@ -10,12 +10,12 @@ target_compile_features(project_options INTERFACE cxx_std_20)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
-  option(ENABLE_BUILD_WITH_TIME_TRACE "Enable -ftime-trace to generate time tracing .json files on clang" OFF)
-  if(ENABLE_BUILD_WITH_TIME_TRACE)
-    target_compile_options(project_options INTERFACE -ftime-trace)
-  endif()
-endif()
+if (CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    option(ENABLE_BUILD_WITH_TIME_TRACE "Enable -ftime-trace to generate time tracing .json files on clang" OFF)
+    if (ENABLE_BUILD_WITH_TIME_TRACE)
+        target_compile_options(project_options INTERFACE -ftime-trace)
+    endif ()
+endif ()
 
 # Link this 'library' to use the warnings specified in CompilerWarnings.cmake
 add_library(project_warnings INTERFACE)
@@ -49,23 +49,23 @@ set(CONAN_EXTRA_OPTIONS "")
 include(cmake/Conan.cmake)
 run_conan()
 
-if(ENABLE_TESTING)
-  enable_testing()
-  message("Building Tests. Be sure to check out test/constexpr_tests for constexpr testing")
-  add_subdirectory(test)
-endif()
+if (ENABLE_TESTING)
+    enable_testing()
+    message("Building Tests. Be sure to check out test/constexpr_tests for constexpr testing")
+    add_subdirectory(test)
+endif ()
 
-set(QT_COMPONENTS Core Quick Gui Widgets Network Test LinguistTools Sql Multimedia MultimediaWidgets  Qml Quick QuickControls2)
-find_package(QT NAMES Qt6 Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
+set(QT_COMPONENTS Core Quick Gui Widgets Network Test LinguistTools Sql Multimedia MultimediaWidgets Qml Quick QuickControls2)
+find_package(QT NAMES Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS ${QT_COMPONENTS} REQUIRED)
 message("Building with Qt" ${QT_VERSION_MAJOR})
 
 
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
-if(EXISTS "${LOC_PATH}")
-  message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file).\
+if (EXISTS "${LOC_PATH}")
+    message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file).\
 	Please make a build subdirectory.")
-endif()
+endif ()
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QtQml_INCLUDE_DIRS})
 add_definitions(${Qt5Widgets_DEFINITIONS} ${QtQml_DEFINITIONS} ${${Qt5Quick_DEFINITIONS}})
